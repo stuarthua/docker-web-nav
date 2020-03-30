@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+# create directory structure
+mkdir -p \
+	/var/www
+
+# create symlinks
+if [ ! -L "/var/www/html" ]; then
+	ln -s /data /var/www/html
+fi
+
+# set permissions
+chown -R abc:abc \
+	/data \
+	/config \
+	/var/www/
