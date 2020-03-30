@@ -1,15 +1,14 @@
-# docker-directorylister
+# docker-web-nav
 
-> Docker for DirectoryLister -- A simple PHP directory lister
+> Docker for Web Nav
 
-## DirectoryLister
+## Web Nav
 
-* Fork from [DirectoryLister-2.72](https://github.com/DirectoryLister/DirectoryLister/tree/2.7.2)
-* Add new theme `vpsmm` for pretty
+* See More: [stuarthua/web-nav](https://github.com/stuarthua/web-nav)
 
 ### Preview
 
-![](https://raw.githubusercontent.com/stuarthua/PicGo/master/tmp/Snipaste_2020-02-09_07-48-15.png)
+![](https://raw.githubusercontent.com/stuarthua/PicGo/master/tmp/Snipaste_2020-03-30_21-43-20.png)
 
 ## Supported Architectures
 
@@ -29,34 +28,13 @@ Here are some example snippets to help you get started creating a container.
 
 ```
 docker create \
-  --name=directorylister \
+  --name=web-nav \
   -e PUID=1000 \
   -e PGID=1000 \
   -p 80:80 \
+  -p 443:443 \
   -v <path to data>:/data \
-  -v <path to config>:/config \
+  -v <path to config>:/config/keys \
   --restart unless-stopped \
-  stuarthua/directorylister
-```
-
-### docker-compose
-
-Compatible with docker-compose v2 schemas.
-
-```
----
-version: "2"
-services:
-  directorylister:
-    image: stuarthua/directorylister
-    container_name: directorylister
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - /path/to/data:/data
-      - /path/to/config:/config
-    ports:
-      - 8080:80
-    restart: unless-stopped
+  stuarthua/web-nav
 ```
