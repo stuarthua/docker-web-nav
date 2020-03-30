@@ -17,6 +17,8 @@ server {
 		rewrite /(.*)/$ /index.php?dir=$1 last;
 
 		# for php pathinfo
+		# or see @https://joyqi.com/vps/configure-nginx-to-support-php-pathinfo.html
+		# or see @https://nanc.xyz/record/how-to-set-mamp-for-typecho.html
 		if (-f $request_filename/index.html){
 		    rewrite (.*) $1/index.html break;
 		}
