@@ -2,17 +2,14 @@
 
 # create directory structure
 mkdir -p \
-	/data \
-	/var/www \
-	/config/keys
+	/config/www/{uploads,files,images}
 
-# create symlinks
-if [ ! -L "/var/www/html" ]; then
-	ln -s /data /var/www/html
+# Echo init finish for test runs
+if [ -n "${TEST_RUN}" ]; then
+	echo '[services.d] done.'
 fi
 
 # set permissions
 chown -R abc:abc \
-	/data \
 	/config \
 	/var/www/

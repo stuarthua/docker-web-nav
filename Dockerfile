@@ -23,7 +23,7 @@ RUN \
  echo "env[PATH] = /usr/local/bin:/usr/bin:/bin" >> /etc/php7/php-fpm.conf && \
  echo "**** fetch webnav ****" && \
  mkdir -p\
-	/data /config/keys /var/www && \
+	/var/www/html && \
  if [ -z ${WEBNAV_RELEASE+x} ]; then \
 	WEBNAV_RELEASE=$(curl -sX GET "https://api.github.com/repos/stuarthua/web-nav/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
@@ -33,7 +33,7 @@ RUN \
 	"https://github.com/stuarthua/web-nav/archive/${WEBNAV_RELEASE}.tar.gz" && \
  tar xf \
  /tmp/webnav.tar.gz -C \
-	/data/ --strip-components=1 && \
+	/var/www/html/ --strip-components=1 && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*
@@ -43,4 +43,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 80 443
-VOLUME /data /config/keys
+VOLUME /config/keys

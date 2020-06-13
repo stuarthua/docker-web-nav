@@ -33,7 +33,6 @@ docker create \
   -e PGID=1000 \
   -p 80:80 \
   -p 443:443 \
-  -v <path to data>:/data \
   -v <path to config>:/config/keys \
   --restart unless-stopped \
   stuarthua/web-nav
