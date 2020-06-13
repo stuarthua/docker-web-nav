@@ -23,7 +23,7 @@ RUN \
  echo "env[PATH] = /usr/local/bin:/usr/bin:/bin" >> /etc/php7/php-fpm.conf && \
  echo "**** fetch webnav ****" && \
  mkdir -p\
-	/data && \
+	/data /config/keys /var/www && \
  if [ -z ${WEBNAV_RELEASE+x} ]; then \
 	WEBNAV_RELEASE=$(curl -sX GET "https://api.github.com/repos/stuarthua/web-nav/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \

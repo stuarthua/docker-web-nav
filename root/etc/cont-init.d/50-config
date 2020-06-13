@@ -2,7 +2,9 @@
 
 # create directory structure
 mkdir -p \
-	/var/www
+	/data \
+	/var/www \
+	/config/keys
 
 # create symlinks
 if [ ! -L "/var/www/html" ]; then
